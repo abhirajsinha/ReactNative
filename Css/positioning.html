@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            height: 400vh;
+        }
+
+        .Box{
+            width: 10rem;
+            height: 10rem;
+        }
+
+        .Box1{
+            background-color: aqua;
+            /* position: static; */
+            /* It will be fixed at the same position with no change/movement and no effect of TLBR will be applied here */
+        }
+
+        .Box2{
+            background-color: blanchedalmond;
+            /* position: absolute;
+            top: 10rem;
+            left: 10rem; */
+            /* Able to move the element from its postion also leaving its natural flow */
+        }
+
+        .Box3{
+            background-color: aquamarine;
+            /* position: relative;
+            top: 10rem;
+            left: 10rem; */
+            /* Able to move the element from its postion but not leaving its natural flow */
+        }
+        .Box4{
+            background-color: brown;
+            position: fixed;
+            top: 20rem;
+            left: 10rem;
+        }
+        .Box5{
+            background-color: darkorchid;
+            position: sticky;
+            top: 10rem;
+            left: 10rem;
+            /* Relative + Fixed*/
+        }
+    </style>
+</head>
+<body>
+    <div class="Box Box1">1</div>
+    <div class="Box Box2">2</div>
+    <div class="Box Box3">3</div>
+    <div class="Box Box4">4</div>
+    <div class="Box Box5">5</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "webscrapping",
+  "version": "1.0.0",
+  "description": "Web Scrapping",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhiraj Sinha",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.11",
+    "pdfkit": "^0.13.0",
+    "request": "^2.88.2"
+  }
+}
