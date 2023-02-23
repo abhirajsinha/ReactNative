@@ -12,14 +12,23 @@
     <title>Passenger Counter</title>
   </head>
   <body>
+    <video id="background-video" autoplay loop muted>
+      <source src="./Files/bgVid.mp4" type="video/mp4" />
+    </video>
+    <audio id="addAudio" src="./Files/add.mp3"></audio>
+    <audio id="removeAudio" src="./Files/remove.mp3"></audio>
+    <audio id="warnAudio" src="./Files/warn.mp3"></audio>
+
     <h1 id="heading">People Entered</h1>
     <h2 id="count-el">0</h2>
-    <button id="incButton" onclick="incCount()">
+
+    <button id="incButton" onclick="incCount(); playAdd()">
       <i class="fa fa-plus"></i>
     </button>
-    <button id="decButton" onclick="decCount()">
+    <button id="decButton" onclick="decCount(); playRemove()">
       <i class="fa fa-minus"></i>
     </button>
+
     <script src="index.js"></script>
   </body>
 </html>
