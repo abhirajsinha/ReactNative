@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "native-base": "^3.4.28",
+    "react": "^18.2.0",
+    "react-native": "^0.71.8"
+  },
+  "name": "reactnative",
+  "version": "1.0.0",
+  "description": "Contains Projects built using React-Native/Native-base",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhirajsinha/ReactNative.git"
+  },
+  "author": "Abhiraj Sinha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhirajsinha/ReactNative/issues"
+  },
+  "homepage": "https://github.com/abhirajsinha/ReactNative#readme"
+}
