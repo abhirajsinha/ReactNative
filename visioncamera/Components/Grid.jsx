@@ -5,7 +5,7 @@ const Grid = () => {
   return (
     <View style={styles.overlayContainer}>
       {/* Overlay View */}
-      <View style={styles.overlayTop} />
+      {/* <View style={styles.overlayTop} /> */}
 
       <View style={styles.container}>
         <View style={styles.row}>
@@ -26,7 +26,7 @@ const Grid = () => {
       </View>
 
       {/* Overlay View */}
-      <View style={styles.overlayBottom} />
+      {/* <View style={styles.overlayBottom} /> */}
     </View>
   );
 };

@@ -18,10 +18,29 @@ import {PermissionsAndroid} from 'react-native';
 import Footer from './Footer';
 import {useCamera} from '../hooks/useCamera';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {CameraRoll, useCameraRoll} from '@react-native-camera-roll/camera-roll';
+import FlatCards from './FlatCards';
 
 const CameraComp = () => {
   const [devices, cameraRef] = useCamera();
   const [cameraPosition, setCameraPosition] = useState('back');
+  const [isCameraLoaded, setIsCameraLoaded] = useState(false);
+  const [images, setImages] = useState([]);
+  const hasPermission = useCameraRoll();
+  useEffect(() => {
+    if (hasPermission) {
+      CameraRoll.getPhotos({first: 7}).then(
+        data => {
+          const assets = data.edges;
+          const images = assets.map(asset => asset.node.image);
+          setImages(images);
+        },
+        error => {
+          console.log(error);
+        },
+      );
+    }
+  }, []);
   const device = cameraPosition == 'front' ? devices.front : devices.back;
   if (device == null) return <Text>Loading Camera..</Text>;
 
@@ -42,7 +61,6 @@ const CameraComp = () => {
   };
 
   const openGallery = () => {
-    console.log('h');
     ImagePicker.openPicker({
       width: 300,
       height: 400,
@@ -63,44 +81,23 @@ const CameraComp = () => {
       : setCameraPosition('front');
   };
 
-  const launchNativeImageLibrary = () => {
-    let options = {
-      includeBase64: true,
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
-    };
-    launchImageLibrary(options, (response) => {
-      console.log('Response = ', response);
-
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.errorCode) {
-        console.log('ImagePicker Error: ', response.error);
-      } else {
-        const source = { uri: response.assets.uri };
-        console.log('response', JSON.stringify(response));
-        // setFileData(response.assets[0].base64);
-        // setFileUri(response.assets[0].uri)
-      }
-    });
-
-  }
-
   return (
     <>
       <Camera
-        style={{flex: 1}}
+        style={{flex: 1, backgroundColor: 'transparent'}}
         ref={cameraRef}
         photo={true}
         device={device}
         isActive={true}
       />
 
+      <FlatCards images={images} />
+
       {/* Camera Handlers */}
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => launchNativeImageLibrary()}>
+        <TouchableOpacity
+          style={{backgroundColor: 'transparent'}}
+          onPress={() => openGallery()}>
           <Image
             style={{height: 25, width: 25}}
             source={{

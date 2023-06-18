@@ -7,7 +7,8 @@ import Grid from './Components/Grid';
 const App = () => {
   return (
     <>
-      <View style={{flex: 1, position: 'relative'}}>
+    <CameraComp/>
+      {/* <View style={{flex: 1, position: 'relative', backgroundColor: 'transparent'}}>
         <CameraComp />
         <View
           style={{
@@ -19,7 +20,7 @@ const App = () => {
           }}>
           <Grid />
         </View>
-      </View>
+      </View> */}
     </>
   );
 };
