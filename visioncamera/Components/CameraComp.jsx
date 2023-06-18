@@ -17,12 +17,13 @@ import ImagePicker from 'react-native-image-crop-picker';
 import {PermissionsAndroid} from 'react-native';
 import Footer from './Footer';
 import {useCamera} from '../hooks/useCamera';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const CameraComp = () => {
   const [devices, cameraRef] = useCamera();
   const [cameraPosition, setCameraPosition] = useState('back');
   const device = cameraPosition == 'front' ? devices.front : devices.back;
-  if (device == null) return <Text>Loading Camera</Text>;
+  if (device == null) return <Text>Loading Camera..</Text>;
 
   const takePhoto = async () => {
     try {
