@@ -14,18 +14,15 @@ import {
   CameraPosition,
 } from 'react-native-vision-camera';
 import ImagePicker from 'react-native-image-crop-picker';
-import {PermissionsAndroid} from 'react-native';
-import Footer from './Footer';
 import {useCamera} from '../hooks/useCamera';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {CameraRoll, useCameraRoll} from '@react-native-camera-roll/camera-roll';
 import FlatCards from './FlatCards';
 
 const CameraComp = () => {
   const [devices, cameraRef] = useCamera();
   const [cameraPosition, setCameraPosition] = useState('back');
-  const [isCameraLoaded, setIsCameraLoaded] = useState(false);
   const [images, setImages] = useState([]);
+  const [imageUri, setImageUri] = useState(null);
   const hasPermission = useCameraRoll();
   useEffect(() => {
     if (hasPermission) {
@@ -52,9 +49,9 @@ const CameraComp = () => {
 
       console.log('Taking Photo');
       const photo = await cameraRef.current.takePhoto({
-        flash: 'on',
+        // flash: 'on', //Can be used to turn on the flash feature of camera
       });
-      console.log('photo', photo);
+      console.log('Photo', photo);
     } catch (error) {
       console.log('Error', error);
     }
@@ -89,6 +86,9 @@ const CameraComp = () => {
         photo={true}
         device={device}
         isActive={true}
+        hdr={true}
+        focusable={true}
+        enableZoomGesture={true}
       />
 
       <FlatCards images={images} />

@@ -1,25 +1,42 @@
-import React from 'react';
-import {
-  View,
-  SafeAreaView,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-} from 'react-native';
+import React, {useState} from 'react';
+import {View, SafeAreaView, StyleSheet, ScrollView, Image} from 'react-native';
+import GestureRecognizer from 'react-native-swipe-gestures';
+import {launchImageLibrary} from 'react-native-image-picker';
 
 const FlatCards = props => {
   const images = props.images;
+  const [galleryImage, setGalleryImage] = useState(null);
+
+  const launchGallery = () => {
+    let options = {
+      storageOptions: {
+        path: 'image',
+      },
+    };
+
+    launchImageLibrary(options, response => {
+      setGalleryImage('');
+    });
+  };
+
   return (
-    <SafeAreaView>
-      <ScrollView horizontal>
-        <View style={styles.container}>
-          {images.map((imageDetail, index) => {
-            return <Image source={{uri: imageDetail.uri}} key={index} style={[styles.card]} />;
-          })}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <GestureRecognizer onSwipeUp={() => launchGallery()}>
+      <SafeAreaView>
+        <ScrollView horizontal>
+          <View style={styles.container}>
+            {images.map((imageDetail, index) => {
+              return (
+                <Image
+                  source={{uri: imageDetail.uri}}
+                  key={index}
+                  style={[styles.card]}
+                />
+              );
+            })}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </GestureRecognizer>
   );
 };
 
