@@ -38,8 +38,9 @@ const CameraComp = () => {
       );
     }
   }, []);
+
   const device = cameraPosition == 'front' ? devices.front : devices.back;
-  if (device == null) return <Text>Loading Camera..</Text>;
+  if (device == null) return <Text>No Camera Found..</Text>;
 
   const takePhoto = async () => {
     try {
@@ -79,7 +80,7 @@ const CameraComp = () => {
   };
 
   return (
-    <>
+    <View flex={1}>
       <Camera
         style={{flex: 1, backgroundColor: 'transparent'}}
         ref={cameraRef}
@@ -99,32 +100,26 @@ const CameraComp = () => {
           style={{backgroundColor: 'transparent'}}
           onPress={() => openGallery()}>
           <Image
-            style={{height: 25, width: 25}}
-            source={{
-              uri: 'https://i.pinimg.com/200x/f2/58/05/f258057b4e00c3273a91c53ffa7107f9.jpg',
-            }}
+            style={{height: 35, width: 35}}
+            source={require('../assets/images/gallerypng.png')}
           />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => takePhoto()}>
           <Image
-            style={{height: 30, width: 30}}
-            source={{
-              uri: 'https://static.thenounproject.com/png/1643496-200.png',
-            }}
+            style={{height: 35, width: 35}}
+            source={require('../assets/images/Camera.png')}
           />
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => toggleCamera()}>
           <Image
-            style={{height: 30, width: 30}}
-            source={{
-              uri: 'https://icons-for-free.com/iconfiles/png/512/rotate-1324760546644436540.png',
-            }}
+            style={{height: 35, width: 35}}
+            source={require('../assets/images/selfieicon.png')}
           />
         </TouchableOpacity>
       </View>
-    </>
+    </View>
   );
 };
 

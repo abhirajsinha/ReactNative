@@ -22,6 +22,16 @@ const FlatCards = props => {
   return (
     <GestureRecognizer onSwipeUp={() => launchGallery()}>
       <SafeAreaView>
+        <View
+          flex={1}
+          marginTop={6}
+          justifyContent="center"
+          alignItems="center">
+          <Image
+            backgroundColor="white"
+            source={require('../assets/images/Bar.svg')}
+          />
+        </View>
         <ScrollView horizontal>
           <View style={styles.container}>
             {images.map((imageDetail, index) => {
@@ -45,16 +55,19 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    padding: 7,
+    padding: 4,
+    marginTop: 5,
+    backgroundColor: 'transparent',
   },
   card: {
-    height: 100,
+    height: 80,
     width: 100,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    margin: 2,
+    margin: 4,
+    backgroundColor: 'transparent',
   },
 });
 
