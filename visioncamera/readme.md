@@ -1,2 +1,2 @@
 # Pagination
-![Pagination]('./../Pagination.png')
+![Pagination]('../../Pagination.png)
