@@ -5,10 +5,10 @@ import Pagination from './Components/Pagination';
 
 const App = () => {
   return (
-    // <View style={{flex: 1, backgroundColor: 'black'}}>
-    //   <CameraComp />
-    // </View>
-    <Pagination />
+    <View style={{flex: 1, backgroundColor: 'black'}}>
+      <CameraComp />
+    </View>
+    // <Pagination />
   );
 };
 

@@ -55,7 +55,9 @@ const App = () => {
   };
 
   //Whenever user reaches at the end of page, increase the page number so it again call the api to fetch next set of data's
+  let idx=0;
   const loadMoreItem = () => {
+    console.log("Fetch", idx++);
     setCurrentPage(currentPage + 1);
   };
 
@@ -67,9 +69,9 @@ const App = () => {
         data={users}
         renderItem={renderItem}
         keyExtractor={item => item.email}
-        ListFooterComponent={renderLoader}
         onEndReached={loadMoreItem}
-        onEndReachedThreshold={0}
+        onEndReachedThreshold={0.8}
+        ListFooterComponent={renderLoader}
       />
     </>
   );
