@@ -34,7 +34,7 @@ const SubHome = () => {
         setVersion((version) => version + 1);
     }
     const renderListItems = () => {
-        return Array(50)
+        return Array(200)
             .fill('')
             .map((_, idx) => (
                 <ListItem
